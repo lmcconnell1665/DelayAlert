@@ -1,0 +1,32 @@
+# This is a basic workflow to lint and test code when it is pushed
+
+name: Build
+
+on:
+  push:
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Setup python 3.7
+      uses: actions/setup-python@v1
+      with:
+        python-version: 3.7
+
+    - name: Install dependencies
+      run: |
+        make install
+        
+    - name: Lint with pylint
+      run: |
+        make lint
+        
+    - name: Test with pytest
+      run: |
+        make test
