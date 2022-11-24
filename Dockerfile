@@ -1,7 +1,7 @@
 # Dockerfile for building application container
 
 # Starting container image
-FROM python:3.7
+FROM python:3.11
 
 # Working directory
 WORKDIR /app
